@@ -1,5 +1,5 @@
 import TopBar from '@/components/elements/top-bar';
-import Filters from '@/components/elements/filters';
+import FiltersAside from '@/components/elements/filters-aside';
 import PizzaCard from '@/components/elements/pizza-card';
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       </div>
       <TopBar />
       <div className='container mt-8 flex gap-[60px]'>
-        <Filters />
+        <FiltersAside />
         <div className='flex flex-wrap gap-12'>
           {Array.from({ length: 100 }).map((_, idx) => (<PizzaCard key={idx} />))}
         </div>
