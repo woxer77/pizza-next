@@ -30,7 +30,8 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
+    --font-nunito: 'Nunito', sans-serif;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -65,5 +66,20 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-nunito), serif;
   }
+}
+
+.filterScroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.filterScroll::-webkit-scrollbar-track {
+  background: #EDEDED;
+  border-radius: 1px;
+}
+
+.filterScroll::-webkit-scrollbar-thumb {
+  background-color: #b1b1b1;
+  border-radius: 1px;
 }

@@ -1,6 +1,5 @@
 import type { Config } from 'tailwindcss';
 
-import { transparent, inherit, white, black } from 'tailwindcss/colors';
 import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
@@ -32,26 +31,6 @@ const config: Config = {
   			md: '768px',
   			lg: '1024px',
   			xl: '1280px'
-  		}
-  	},
-  	colors: {
-      transparent,
-      white,
-      black,
-      inherit,
-  		gray: {
-  			'100': '#f9f9f9',
-  			'200': '#EDEDED',
-  			'400': '#b1b1b1',
-  			'500': '#7b7b7b'
-  		},
-  		orange: {
-  			'500': '#fe5f00',
-  			'600': '#e34e00'
-  		},
-  		pink: {
-  			'400': '#fffaf4',
-  			'500': '#fff7ee'
   		}
   	},
   	extend: {
@@ -100,7 +79,29 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+        gray: {
+          '100': '#f9f9f9',
+          '200': '#F5F5F5',
+          '300': '#EDEDED',
+          '400': '#b1b1b1',
+          '500': '#7b7b7b'
+        },
+        red: {
+          '100': '#fbe9eb',
+          '200': '#f4bec3',
+          '300': '#ec939c',
+          '400': '#e46774',
+          '500': '#dd3c4c',
+          '600': '#c32233',
+          '700': '#981b28',
+          '800': '#6c131c',
+          '900': '#410b11'
+        },
+        wheat: {
+          '400': '#fffaf4',
+          '500': '#fff7ee'
+        }
   		},
   		keyframes: {
   			'accordion-down': {
