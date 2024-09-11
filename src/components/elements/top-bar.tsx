@@ -33,7 +33,7 @@ const TopBar: React.FC<ClassProps> = ({ className }) => {
   }, [changeCategory]);
 
   return (
-    <div className={cn('sticky top-0 bg-white border-b border-solid border-gray-300 shadow-md shadow-gray-300', className)}>
+    <div className={cn('sticky top-0 bg-white border-b border-solid border-gray-300 shadow-lg shadow-gray-300', className)}>
       <div className='container py-6 flex-space-between'>
         <div className='relative inline-flex select-none rounded-2xl bg-gray-200 gap-1.5 px-1.5 py-1.5' ref={parentElement}>
           {categories.map((category: Categories) => (
@@ -55,7 +55,7 @@ const TopBar: React.FC<ClassProps> = ({ className }) => {
           />
         </div>
         <div className='inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-2xl bg-gray-200 px-6 font-bold py-[18px]'>
-          <ArrowDownUp size="20" />
+          <ArrowDownUp size={20} />
           <p>Sort by: </p>
           <span className='text-red-500'>rating</span>
         </div>

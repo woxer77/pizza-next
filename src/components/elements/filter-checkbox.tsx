@@ -3,12 +3,12 @@ import { ClassProps } from '@/ts/interfaces';
 import { cn } from '@/lib/utils';
 import { Checkbox } from '@/components/ui/checkbox';
 
-interface CheckboxProps extends ClassProps{
+export interface FilterCheckboxProps extends ClassProps{
   id: string;
   text: string;
 }
 
-const FilterCheckbox: React.FC<CheckboxProps> = ({ className, id, text }) => {
+const FilterCheckbox: React.FC<FilterCheckboxProps> = ({ className, id, text }) => {
   return (
     <div className={cn('flex font-medium gap-3', className)}>
       <Checkbox id={id}/>

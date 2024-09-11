@@ -2,12 +2,12 @@ import React from 'react';
 
 import { ShoppingCart, User, MoveRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Search from '@/components/elements/search';
 
 import { ClassProps } from '@/ts/interfaces';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 
 const Header: React.FC<ClassProps> = ({ className }) => {
   return (

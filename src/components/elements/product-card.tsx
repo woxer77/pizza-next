@@ -8,7 +8,7 @@ import { Blocks } from 'lucide-react';
 import { ClassProps } from '@/ts/interfaces';
 import { cn } from '@/lib/utils';
 
-const PizzaCard: React.FC<ClassProps> = ({ className }) => {
+const ProductCard: React.FC<ClassProps> = ({ className }) => {
   return (
     <Card className={cn('flex flex-col w-[285px] shadow-none', className)}>
       <div className="mb-4 rounded-2xl bg-wheat-500 flex-center h-[260px]">
@@ -24,11 +24,11 @@ const PizzaCard: React.FC<ClassProps> = ({ className }) => {
         <p className='text-xl'>from <span className='font-bold'>$10</span></p>
         <Button className='font-semibold h-[42px]' variant="secondary">
           <Blocks className='mr-3'/>
-          <p className="text-base font-bold">Build</p>
+          <p className="text-lg font-bold">Add</p>
         </Button>
       </CardFooter>
     </Card>
   );
 };
 
-export default PizzaCard;
+export default ProductCard;
