@@ -4,7 +4,6 @@ const useSegmentedControl = () => {
 
     const parentRect = parent.getBoundingClientRect();
     const targetRect = targetElement.getBoundingClientRect();
-    console.log(parentRect, targetRect);
 
     const left = targetRect.left - parentRect.left;
     const width = targetRect.width;
