@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Blocks } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 import { ClassProps } from '@/ts/interfaces';
 import { cn } from '@/lib/utils';
@@ -30,7 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ className, imgSrc, title, des
       <CardFooter className="flex-space-between p-0">
         <p className='text-xl'>from <span className='font-bold'>${price}</span></p>
         <Button className='font-semibold h-[42px]' variant="secondary">
-          <Blocks className='mr-3'/>
+          <Plus className='mr-3'/>
           <p className="text-lg font-bold">Add</p>
         </Button>
       </CardFooter>
