@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  url      = env("POSTGRES_URL")
+  provider = "postgresql"
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  email       String    @unique
+  password    String
+  firstName   String
+  secondName  String
+  birthday    DateTime?
+  phoneNumber String    @unique
+  address     String?
+  role        UserRole  @default(USER)
+  provider    String?
+  provederId  String?
+
+  cart   Cart?
+  orders Order[]
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+
+  name        String
+  description String
+  image       String
+
+  category    Category     @relation(fields: [categoryId], references: [id])
+  categoryId  String
+  ingredients Ingredient[]
+  variations  Variation[]
+}
+
+model Variation {
+  id Int @id @default(autoincrement())
+
+  price     Int
+  size      Int?
+  doughType Int?
+
+  product   Product    @relation(fields: [productId], references: [id])
+  productId Int
+  cartItems CartItem[]
+}
+
+model Ingredient {
+  id Int @id @default(autoincrement())
+
+  name  String
+  price Int
+  image String
+
+  products  Product[]
+  cartItems CartItem[]
+}
+
+model Category {
+  id String @id
+
+  name String @unique
+
+  products Product[]
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+
+  token       String? @unique
+  totalAmount Int     @default(0)
+
+  user      User?      @relation(fields: [userId], references: [id])
+  userId    Int?       @unique
+  cartItems CartItem[]
+}
+
+model CartItem {
+  id Int @id @default(autoincrement())
+
+  quantity Int
+
+  variation   Variation    @relation(fields: [variationId], references: [id])
+  variationId Int
+  cart        Cart         @relation(fields: [cartId], references: [id])
+  cartId      Int
+  ingredients Ingredient[]
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+
+  paymentId    String?
+  status       OrderStatus
+  token        String?
+  totalAmount  Int
+  items        Json
+  firstName    String
+  secondName   String
+  email        String
+  phoneNumber  String      @unique
+  address      String
+  comment      String?
+  deliveryDate DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+enum OrderStatus {
+  PENDING
+  FULFILLED
+  REJECTED
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
