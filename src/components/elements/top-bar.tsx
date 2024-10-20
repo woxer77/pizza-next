@@ -14,6 +14,7 @@ const categories = ['pizzas', 'other1', 'sweet', 'vegetarian', 'other', 'more'];
 const TopBar: React.FC<ClassProps> = ({ className }) => {
   const selectionElement = React.useRef<HTMLDivElement>(null);
   const parentElement = React.useRef<HTMLDivElement>(null);
+  const topBarElement = React.useRef<HTMLDivElement>(null);
 
   const { changeSegment } = useSegmentedControl();
   const setActiveCategory = useActiveCategory(state => state.setActiveCategory);
@@ -25,6 +26,19 @@ const TopBar: React.FC<ClassProps> = ({ className }) => {
       setActiveCategory(category);
     }
   }, []);
+
+  const scrollToSection = (category: string) => {
+    const targetElement = document.querySelector(`#${category}-group`);
+
+    if (targetElement && topBarElement.current) {
+      const offsetTop =
+        targetElement.getBoundingClientRect().top +
+        window.scrollY -
+        topBarElement.current?.offsetHeight -
+        15;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }
+  };
 
   React.useEffect(() => {
     const targetElement = parentElement.current?.querySelector(
@@ -42,6 +56,7 @@ const TopBar: React.FC<ClassProps> = ({ className }) => {
         'sticky top-0 bg-white border-b border-solid border-gray-300 shadow-lg shadow-gray-300',
         className
       )}
+      ref={topBarElement}
     >
       <div className="container py-6 flex-space-between">
         <div
@@ -49,17 +64,17 @@ const TopBar: React.FC<ClassProps> = ({ className }) => {
           ref={parentElement}
         >
           {categories.map((category: string) => (
-            <a
+            <button
               className={cn(
                 'z-10 cursor-pointer rounded-2xl px-6 py-3 font-bold capitalize transition duration-300 flex-center hover:opacity-70',
                 (activeCategory || categories[0]) === category ? 'text-red-500' : 'opacity-50'
               )}
               key={category}
-              href={`#${category}-group`}
               id={`${category}-top-bar`}
+              onClick={() => scrollToSection(category)}
             >
               {category}
-            </a>
+            </button>
           ))}
           <div
             className="absolute top-1/2 h-3/4 -translate-y-1/2 rounded-2xl bg-white shadow-md transition-all duration-300"
