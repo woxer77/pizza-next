@@ -15,7 +15,13 @@ interface PriceFromToProps extends ClassProps {
   step?: number;
 }
 
-const PriceFromTo: React.FC<PriceFromToProps> = ({ className, min, max, step = 1, minStepsBetweenThumbs }) => {
+const PriceFromTo: React.FC<PriceFromToProps> = ({
+  className,
+  min,
+  max,
+  step = 1,
+  minStepsBetweenThumbs
+}) => {
   const [priceRange, setPriceRange] = React.useState<[number, number]>([min, max]);
 
   const changePriceSlider = (price: [number, number]) => {
@@ -23,7 +29,7 @@ const PriceFromTo: React.FC<PriceFromToProps> = ({ className, min, max, step = 1
   };
 
   const changePriceInput = (price: number, type: 'min' | 'max') => {
-    setPriceRange((prev) => {
+    setPriceRange(prev => {
       const newPriceRange: [number, number] = [...prev];
       if (type === 'min') newPriceRange[0] = price;
       if (type === 'max') newPriceRange[1] = price;
@@ -41,7 +47,7 @@ const PriceFromTo: React.FC<PriceFromToProps> = ({ className, min, max, step = 1
           min={min}
           max={priceRange[1] - minStepsBetweenThumbs}
           value={priceRange[0]}
-          onChange={(e) => changePriceInput(Number(e.target.value), 'min')}
+          onChange={e => changePriceInput(Number(e.target.value), 'min')}
         />
         <Input
           className="w-1/2"
@@ -50,7 +56,7 @@ const PriceFromTo: React.FC<PriceFromToProps> = ({ className, min, max, step = 1
           min={priceRange[0] + minStepsBetweenThumbs}
           max={max}
           value={priceRange[1]}
-          onChange={(e) => changePriceInput(Number(e.target.value), 'max')}
+          onChange={e => changePriceInput(Number(e.target.value), 'max')}
         />
       </div>
       <SliderRange

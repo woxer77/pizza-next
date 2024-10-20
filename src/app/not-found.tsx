@@ -19,7 +19,9 @@ const NotFound: React.FC<ClassProps> = ({ className }) => {
       <div className="flex-center gap-16">
         <div className="flex flex-col max-w-96">
           <h1 className="text-4xl font-bold mb-3">Page was not found</h1>
-          <p className="text-xl text-gray-400 mb-11">Check if the entered address is correct or try again later</p>
+          <p className="text-xl text-gray-400 mb-11">
+            Check if the entered address is correct or try again later
+          </p>
           <div className="flex gap-5">
             <Button onClick={() => router.push('/')}>
               <MoveLeft className="mr-3" />

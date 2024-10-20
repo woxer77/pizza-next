@@ -7,7 +7,7 @@ const useDebounce = (callback: CallbackType, delay: number) => {
   const timeoutId = React.useRef<NodeJS.Timeout | null>(null);
 
   return (event: EventType) => {
-    if(timeoutId.current) {
+    if (timeoutId.current) {
       clearTimeout(timeoutId.current);
     }
 

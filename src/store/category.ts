@@ -5,7 +5,7 @@ interface CategoryState {
   setActiveCategory: (category: string) => void;
 }
 
-export const useActiveCategory = create<CategoryState>((set) => ({
+export const useActiveCategory = create<CategoryState>(set => ({
   activeCategory: '',
   setActiveCategory: (category: string) => set({ activeCategory: category })
 }));

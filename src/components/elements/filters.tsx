@@ -25,7 +25,9 @@ const Filters: React.FC<FiltersProps> = ({ className, title, elements, limit = 5
   const [shownElements, setShownElements] = React.useState<Element[]>(initialElements);
 
   const debounceInputHandler = useDebounce((event: ChangeEvent<HTMLInputElement>) => {
-    setShownElements(elements.filter((elem) => elem.text.toLowerCase().includes(event.target.value.toLowerCase())));
+    setShownElements(
+      elements.filter(elem => elem.text.toLowerCase().includes(event.target.value.toLowerCase()))
+    );
   }, 300);
 
   React.useEffect(() => {
@@ -35,21 +37,22 @@ const Filters: React.FC<FiltersProps> = ({ className, title, elements, limit = 5
   }, [elements, limit, showAll]);
 
   return (
-    <div className={cn('border-b border-solid border-gray-300 p-1 py-7 last-of-type:border-0 max-h-96 overflow-y-auto filterScroll', className)}>
+    <div
+      className={cn(
+        'border-b border-solid border-gray-300 p-1 py-7 last-of-type:border-0 max-h-96 overflow-y-auto filterScroll',
+        className
+      )}
+    >
       <div className="flex flex-col items-start gap-4">
         {title && <h3 className="font-bold">{title}</h3>}
-        {showAll &&
-          <Input
-            onChange={debounceInputHandler}
-            placeholder="Find..."
-            className="w-4/5"
-          />
-        }
-        {shownElements.map((element) => (
-          <FilterCheckbox key={element.id} id={element.id} text={element.text}/>
+        {showAll && (
+          <Input onChange={debounceInputHandler} placeholder="Find..." className="w-4/5" />
+        )}
+        {shownElements.map(element => (
+          <FilterCheckbox key={element.id} id={element.id} text={element.text} />
         ))}
         {shownElements.length === 0 && <p className="text-gray-400">Nothing was found</p>}
-        {elements?.length > limit &&
+        {elements?.length > limit && (
           <Button
             variant="link"
             className="text-red-500 p-0 h-6"
@@ -57,7 +60,7 @@ const Filters: React.FC<FiltersProps> = ({ className, title, elements, limit = 5
           >
             {!showAll ? '+ Show all' : 'Hide'}
           </Button>
-        }
+        )}
       </div>
     </div>
   );

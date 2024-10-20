@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.variable} min-h-screen bg-white relative`}>
-        <Header/>
+        <Header />
         {children}
       </body>
     </html>

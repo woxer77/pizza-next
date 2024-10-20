@@ -6,14 +6,14 @@ import ProductsGroup from '@/components/elements/products-group';
 export default function Home() {
   return (
     <>
-      <div className='mt-10 mb-5 container'>
-        <h1 className='text-4xl font-bold'>All pizzas</h1>
+      <div className="mt-10 mb-5 container">
+        <h1 className="text-4xl font-bold">All pizzas</h1>
       </div>
       <TopBar />
-      <div className='container mt-8 flex gap-[60px]'>
+      <div className="container mt-8 flex gap-[60px]">
         <FiltersAside />
         <main>
-          <ProductsGroup title="Pizzas" >
+          <ProductsGroup title="Pizzas">
             {Array.from({ length: 10 }).map((_, idx) => (
               <ProductCard
                 key={idx}

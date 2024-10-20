@@ -28,9 +28,7 @@ const ProductsGroup: React.FC<ProductsCategoryProps> = ({ className, title, chil
   return (
     <div className={cn('mb-8', className)} ref={intersectionRef} id={`${toSlug(title)}-group`}>
       <h2 className="text-3xl font-bold mb-7">{title}</h2>
-      <div className="grid grid-cols-3 gap-12">
-        {children}
-      </div>
+      <div className="grid grid-cols-3 gap-12">{children}</div>
     </div>
   );
 };
