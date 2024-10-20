@@ -1,9 +1,7 @@
 const useSegmentedControl = () => {
-  const changeSegment = (target: EventTarget, parent: HTMLDivElement, selection: HTMLDivElement) => {
-    const targetElement = target as Element;
-
+  const changeSegment = (target: Element, parent: HTMLElement, selection: HTMLElement) => {
     const parentRect = parent.getBoundingClientRect();
-    const targetRect = targetElement.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
 
     const left = targetRect.left - parentRect.left;
     const width = targetRect.width;
